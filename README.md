@@ -1,1 +1,1 @@
-A simplifeid wordle
+A simplified wordle
