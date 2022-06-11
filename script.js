@@ -1,9 +1,9 @@
-var rowNumner = 0;
-var cellNumber = 0;
+var rowPos = 0;
+var cellPos = 0;
 
 function main() {
-    rowNumner = 0;
-    cellNumber = 0;
+    rowPos = 0;
+    cellPos = 0;
     
     const main = document.querySelector(".main")
 
@@ -24,30 +24,29 @@ function main() {
 main()
 
 document.addEventListener('keyup', function(e) {
-    // Populate next cell
-    if (e.key === 'Enter') {
+    const key = e.key;
+    if (cellPos === 5 && key === 'Enter') {
         // Check word
-        rowNumner++;
-        cellNumber = 0;
+        rowPos++;
+        cellPos = 0;
         return;
     }
     
-    if (rowNumner < 6)
+    if (rowPos < 6) {
         rows = document.getElementsByClassName('row');
-
-    if (cellNumber < 5) {
-        if (e.key === 'Backspace') {
-            if (cellNumber !== 0) {
-                cellNumber--;
-                nextCell = rows[rowNumner].children[cellNumber];
-                nextCell.textContent = '';                
-            }
-        }
-
-        nextCell = rows[rowNumner].children[cellNumber];
-        nextCell.textContent = e.key;
-        cellNumber++
     }
 
+    if (cellPos > 0 && cellPos < 6 && key === 'Backspace') {
+        cellPos--;
+        nextCell = rows[rowPos].children[cellPos];
+        nextCell.textContent = '';                
+        return;
+    }
+    if (cellPos < 5 && key.match(/[a-z]/i) && key.length === 1) {
+        // Populate next cell
+        nextCell = rows[rowPos].children[cellPos];
+        nextCell.textContent = key.toUpperCase();
+        cellPos++
+    }
 
 });
