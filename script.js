@@ -1,6 +1,6 @@
+var wordToGuess = ''
 var rowPos = 0;
 var cellPos = 0;
-var wordToGuess = 'HORSE'
 var enteredWord = []
 var rows
 
@@ -9,8 +9,14 @@ function main() {
     cellPos = 0;
     enteredWord = [];
 
+    // Select word to guess randomly from validWords array
+    wordToGuess = validWords[Math.floor(Math.random() * validWords.length)];
+    console.log(wordToGuess)
+
     // Render HTML
     const main = document.querySelector(".main")
+    while (main.firstChild) 
+        main.removeChild(main.firstChild);
 
     for (let i = 0; i < 6; i++) {
         let row = document.createElement("div")
@@ -21,7 +27,6 @@ function main() {
             cell.className = "cell"
             row.appendChild(cell)
         }
-
         main.appendChild(row)
     }
 }
@@ -50,21 +55,21 @@ function checkWord(enteredArray) {
     }
 
     if (greenCount === 5) {
-        setTimeout(function() {
-            if (confirm("You Won!\nSelect OK to play again?")) {
-                main();
-            }
-            else {
-                return;
-            }
-        }, 100);
+        const msg = "You Won!\n\nPlay again?"
+        playAgan(msg)
     }
 
-    if (rowPos === 5)
-    {
-        setTimeout(function() {alert("You Lost!")}, 100);
-        return;
+    if (rowPos === 5) {
+        const msg = "You Lost!\n\nCorrect word is: " + wordToGuess + "\n\nPlay again?"
+        playAgan(msg)
     }
+}
+
+function playAgan(msg) {
+    setTimeout(function() {
+        if (confirm(msg)) 
+            main();
+    }, 100);
 }
 
 document.addEventListener('keyup', function(e) {
