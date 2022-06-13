@@ -31,39 +31,53 @@ function main() {
     }
 }
 
-function checkWord(enteredArray) {
+function checkWord() {
     const guessArray = Array.from(wordToGuess);
     let greenCount = 0;
-    for (let i = 0; i < enteredArray.length; i++) {
-        let letterColor = '';
-        let letterPos = guessArray.indexOf(enteredArray[i])
-        if (letterPos === -1)
-            letterColor = 'grey';
-        else {
-            if (enteredArray[i] === guessArray[i]) {
-                letterColor = 'green';              
-                greenCount++;
-            }  
+
+    // Verify that entered word is a valid word
+    const word = enteredWord.join('')
+    if (validWords.includes(word)) {    
+        // Check each character in a word and assign colour
+        for (let i = 0; i < enteredWord.length; i++) {
+            let letterColor = '';
+            let letterPos = guessArray.indexOf(enteredWord[i])
+
+            if (letterPos === -1)
+                letterColor = 'grey';
             else {
-                letterColor = 'yellow';                
+                if (enteredWord[i] === guessArray[i]) {
+                    letterColor = 'green';              
+                    greenCount++;
+                }  
+                else {
+                    letterColor = 'yellow';                
+                }
             }
+        
+            // Set colour for the cell
+            const currentCell = rows[rowPos].children[i];
+            currentCell.style.backgroundColor = letterColor;        
         }
-        // Set correct colour on the cell
 
-        const currentCell = rows[rowPos].children[i];
-        currentCell.style.backgroundColor = letterColor;        
+        // Check the result
+        if (greenCount === 5) {
+            const msg = "You Won! Play again?"
+            playAgan(msg)
+        }
+
+        if (rowPos === 5) {
+            const msg = "You Lost! Correct word is: " + wordToGuess + ". Play again?"
+            playAgan(msg)
+        }
+        return true;
     }
-
-    if (greenCount === 5) {
-        const msg = "You Won!\n\nPlay again?"
-        playAgan(msg)
-    }
-
-    if (rowPos === 5) {
-        const msg = "You Lost!\n\nCorrect word is: " + wordToGuess + "\n\nPlay again?"
-        playAgan(msg)
+    else {
+        alert("Word not found!")    
+        return false;
     }
 }
+
 
 function playAgan(msg) {
     setTimeout(function() {
@@ -79,10 +93,11 @@ document.addEventListener('keyup', function(e) {
 
     if (cellPos === 5 && key === 'Enter') {
         // Check word
-        checkWord(enteredWord);
-        enteredWord = [];
-        rowPos++;
-        cellPos = 0;
+        if (checkWord()) {
+            enteredWord = [];
+            rowPos++;
+            cellPos = 0;
+        }
         return;
     }
     
