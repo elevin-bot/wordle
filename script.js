@@ -44,10 +44,10 @@ function checkWord() {
             let letterPos = guessArray.indexOf(enteredWord[i])
 
             if (letterPos === -1)
-                letterColor = 'grey';
+                letterColor = 'lightgrey';
             else {
                 if (enteredWord[i] === guessArray[i]) {
-                    letterColor = 'green';              
+                    letterColor = 'lightgreen';              
                     greenCount++;
                 }  
                 else {
@@ -94,6 +94,7 @@ document.addEventListener('keyup', function(e) {
     if (cellPos === 5 && key === 'Enter') {
         // Check word
         if (checkWord()) {
+            rows[rowPos].classList.add('blink_me')
             enteredWord = [];
             rowPos++;
             cellPos = 0;
@@ -108,6 +109,7 @@ document.addEventListener('keyup', function(e) {
         cellPos--;
         nextCell = rows[rowPos].children[cellPos];
         nextCell.textContent = '';                
+        nextCell.classList.remove('blink_me')
         return;
     }
     if (cellPos < 5 && key.match(/[a-z]/i) && key.length === 1) {
@@ -115,6 +117,8 @@ document.addEventListener('keyup', function(e) {
         nextCell = rows[rowPos].children[cellPos];
         nextCell.textContent = key.toUpperCase();
         enteredWord[cellPos] = key.toUpperCase();
+        // Add some animation
+        nextCell.classList.add('blink_me')
         cellPos++
     }
     
