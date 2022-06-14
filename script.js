@@ -29,6 +29,9 @@ function main() {
         }
         main.appendChild(row)
     }
+
+    // Create keyboard
+    
 }
 
 function checkWord() {

@@ -40,3 +40,22 @@
       opacity: 0;
     }
   }
+
+  .key {
+    margin: 0 2px;
+    padding: 8px;
+}
+
+.row {
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+}
+
+.keyboard {
+    margin-top: 20px;
+}
+
+#row-1 {
+    margin: 5px 0;
+}
