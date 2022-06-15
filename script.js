@@ -1,8 +1,10 @@
-var wordToGuess = ''
+var wordToGuess = '';
 var rowPos = 0;
 var cellPos = 0;
-var enteredWord = []
-var rows
+var enteredWord = [];
+var rows;
+var gamesPlayed = 0;
+var gamesWon = 0;
 
 function main() {
     rowPos = 0;
@@ -14,24 +16,21 @@ function main() {
     console.log(wordToGuess)
 
     // Render HTML
-    const main = document.querySelector(".main")
+    const main = document.querySelector(".main");
     while (main.firstChild) 
         main.removeChild(main.firstChild);
 
     for (let i = 0; i < 6; i++) {
-        let row = document.createElement("div")
-        row.className = "row"
+        let row = document.createElement("div");
+        row.className = "row";
         
         for (let j = 0; j < 5; j++) {
-            let cell = document.createElement("div")
-            cell.className = "cell"
-            row.appendChild(cell)
+            let cell = document.createElement("div");
+            cell.className = "cell";
+            row.appendChild(cell);
         }
-        main.appendChild(row)
+        main.appendChild(row);
     }
-
-    // Create keyboard
-
 }
 
 function checkWord() {
@@ -61,12 +60,20 @@ function checkWord() {
             // Set colour for the cell
             const currentCell = rows[rowPos].children[i];
             currentCell.style.backgroundColor = letterColor;        
+
+            // Set colour on the keboard
+            for (const key of document.getElementsByClassName("key")) {
+                if (key.textContent === enteredWord[i]) {
+                    key.style.backgroundColor = letterColor;        
+                }
+            }
         }
 
         // Check the result
         if (greenCount === 5) {
-            const msg = "You Won! Play again?"
-            playAgan(msg)
+            const msg = "You Won! Play again?";
+            gamesWon++
+            playAgan(msg);
         }
 
         if (rowPos === 5) {
@@ -81,12 +88,15 @@ function checkWord() {
     }
 }
 
-
 function playAgan(msg) {
     setTimeout(function() {
         if (confirm(msg)) 
             main();
     }, 100);
+    gamesPlayed++;
+    // Display stats
+    document.getElementById('played').textContent = gamesPlayed;
+    document.getElementById('won').textContent = gamesWon;
 }
 
 document.addEventListener('keyup', function(e) {

@@ -24,7 +24,7 @@
     width: 227px;
     height: 22px;
     display: block;
-    margin: 20px auto 40px auto;    
+    margin: 20px auto;    
 }
 
 .logoImg:hover {
@@ -42,8 +42,8 @@
   }
 
   .key {
-    margin: 0 2px;
-    padding: 8px;
+    margin: 0 3px;
+    padding: 9px;
     font-size: 16px;
 }
 
@@ -58,7 +58,7 @@
 }
 
 #row-1 {
-    margin: 6px 0;
+    margin: 8px 0;
 }
 
 @media screen and (max-width: 450px) {
@@ -67,7 +67,22 @@
         padding: 2px;
         font-size: 14px;
     }
-    #row-1 {
-        margin: 3px 0;
+    .row-1 {
+        margin: 5px 0;
     }    
+    #keyboard {
+        margin-left: 5px;
+        margin-right: 5px;
+    }    
+}
+
+#stats {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.item {
+    text-align: center;
+    padding: 7px;
 }
