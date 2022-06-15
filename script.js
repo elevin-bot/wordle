@@ -31,7 +31,7 @@ function main() {
     }
 
     // Create keyboard
-    
+
 }
 
 function checkWord() {
@@ -90,7 +90,15 @@ function playAgan(msg) {
 }
 
 document.addEventListener('keyup', function(e) {
-    const key = e.key;
+    keyPress(e.key);
+});
+
+document.getElementById('keyboard').addEventListener('click', function(e) {
+    if (e.target.classList.contains("key"))
+        keyPress(e.target.textContent);
+});
+
+function keyPress(key) {
     if (rowPos == 6)
         return;
 
@@ -123,8 +131,7 @@ document.addEventListener('keyup', function(e) {
         // Add some animation
         nextCell.classList.add('blink_me')
         cellPos++
-    }
-    
-});
+    }    
+}
 
 main()
