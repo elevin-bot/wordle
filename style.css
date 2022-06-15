@@ -63,8 +63,12 @@
 
 @media only screen and (max-width: 900px) {
     .key {
-        margin: 0 0.5px;
+        margin: 0;
         padding: 2px;
         font-size: 16px;
+    }
+
+    #keyboard {
+        margin: 20px 2px 0 2px;
     }
   }
