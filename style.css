@@ -45,7 +45,9 @@
     margin: 0 3px;
     padding: 9px;
     font-size: 16px;
-    background-color: grey;
+    color: black;
+    border: 1px solid black;
+    border-radius: 2px;
     -webkit-appearance: none;
 }
 
