@@ -45,6 +45,7 @@
     margin: 0 3px;
     padding: 9px;
     font-size: 16px;
+    -webkit-appearance: none;
 }
 
 .row {
@@ -63,17 +64,9 @@
 
 @media screen and (max-width: 450px) {
     .key {
-        margin: 0;
-        padding: 2px;
-        font-size: 14px;
+        /* margin: 0 2px; */
+        padding: 4px;
     }
-    .row-1 {
-        margin: 5px 0;
-    }    
-    #keyboard {
-        margin-left: 5px;
-        margin-right: 5px;
-    }    
 }
 
 #stats {
