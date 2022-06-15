@@ -17,7 +17,7 @@ function main() {
 
     // Set background colour to default on buttons
     for (const key of document.getElementsByClassName("key")) {
-            key.style.backgroundColor = 'initial';        
+            key.style.backgroundColor = '#F5F5F5';        
     }
 
     // Render HTML
