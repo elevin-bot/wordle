@@ -64,8 +64,8 @@
 
 @media screen and (max-width: 450px) {
     .key {
-        /* margin: 0 2px; */
-        padding: 4px;
+        margin: 0 2px;
+        padding: 6px;
     }
 }
 
