@@ -15,9 +15,9 @@ function main() {
     wordToGuess = validWords[Math.floor(Math.random() * validWords.length)];
     console.log(wordToGuess)
 
-    // Remove background colour on keyboard keys
+    // Set background colour to default on buttons
     for (const key of document.getElementsByClassName("key")) {
-            key.style.backgroundColor = 'transparent';        
+            key.style.backgroundColor = 'initial';        
     }
 
     // Render HTML
