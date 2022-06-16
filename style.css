@@ -77,13 +77,6 @@
     margin: 8px 0;
 }
 
-/* @media screen and (max-width: 450px) {
-    .key {
-        margin: 0 2px;
-        padding: 6px;
-    }
-} */
-
 #stats {
     display: flex;
     justify-content: center;
@@ -108,11 +101,20 @@
 }
 
 h {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
 }
 
 p {
-    font-size: 12px;
+    font-size: 14px;
     text-align: justify;
+}
+
+@media screen and (max-width: 450px) {
+    h {
+        font-size: 19px;
+    }
+    p {
+        font-size: 12px;
+    }
 }
