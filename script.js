@@ -15,12 +15,12 @@ function main() {
     wordToGuess = validWords[Math.floor(Math.random() * validWords.length)];
     console.log(wordToGuess)
 
-    // Set background colour to default on buttons
+    // Set background colour to default on keyboard buttons
     for (const key of document.getElementsByClassName("key")) {
             key.style.backgroundColor = '#F5F5F5';        
     }
 
-    // Render HTML
+    // Render Wordle Grid HTML
     const main = document.querySelector(".main");
     while (main.firstChild) 
         main.removeChild(main.firstChild);
@@ -94,6 +94,7 @@ function checkWord() {
 }
 
 function playAgan(msg) {
+    // Delay message display
     setTimeout(function() {
         if (confirm(msg)) 
             main();
@@ -114,6 +115,7 @@ document.getElementById('keyboard').addEventListener('click', function(e) {
     }
 });
 
+// Stop automated zoom on mobile devices with double tap on keyboard
 document.getElementById('keyboard').addEventListener('dblclick', function(e) {
     e.preventDefault();    
 });
@@ -122,9 +124,11 @@ function keyPress(key) {
     if (rowPos == 6)
         return;
 
+    // Check for Enter key    
     if (cellPos === 5 && key === 'Enter') {
         // Check word
         if (checkWord()) {
+            // Add some animation
             rows[rowPos].classList.add('blink_me')
             enteredWord = [];
             rowPos++;
@@ -136,6 +140,7 @@ function keyPress(key) {
     // Get cell (html) collection for the current row
     rows = document.getElementsByClassName('row');
 
+    // Chekc for backspace/Delete button
     if (cellPos > 0 && cellPos < 6 && (key === 'Backspace' || key === 'Del')) {
         cellPos--;
         nextCell = rows[rowPos].children[cellPos];
@@ -143,6 +148,8 @@ function keyPress(key) {
         nextCell.classList.remove('blink_me')
         return;
     }
+
+    // Only a-z characters accepted
     if (cellPos < 5 && key.match(/[a-z]/i) && key.length === 1) {
         // Populate next cell
         nextCell = rows[rowPos].children[cellPos];
