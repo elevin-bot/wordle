@@ -41,14 +41,26 @@
     }
   }
 
-  .key {
+.key {
     margin: 0 3px;
-    padding: 9px;
-    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
     color: black;
     border: 1px solid black;
     border-radius: 2px;
     -webkit-appearance: none;
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+}
+
+.key:hover {
+    opacity: 0.5;
+}
+
+#enter {
+    width: 100px;
 }
 
 .row {
@@ -65,12 +77,12 @@
     margin: 8px 0;
 }
 
-@media screen and (max-width: 450px) {
+/* @media screen and (max-width: 450px) {
     .key {
         margin: 0 2px;
         padding: 6px;
     }
-}
+} */
 
 #stats {
     display: flex;

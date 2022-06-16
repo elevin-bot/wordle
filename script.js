@@ -109,8 +109,13 @@ document.addEventListener('keyup', function(e) {
 });
 
 document.getElementById('keyboard').addEventListener('click', function(e) {
-    if (e.target.classList.contains("key"))
+    if (e.target.classList.contains("key")) {
         keyPress(e.target.textContent);
+    }
+});
+
+document.getElementById('keyboard').addEventListener('dblclick', function(e) {
+    e.target.preventDefault();    
 });
 
 function keyPress(key) {
@@ -131,7 +136,7 @@ function keyPress(key) {
     // Get cell (html) collection for the current row
     rows = document.getElementsByClassName('row');
 
-    if (cellPos > 0 && cellPos < 6 && key === 'Backspace') {
+    if (cellPos > 0 && cellPos < 6 && (key === 'Backspace' || key === 'Del')) {
         cellPos--;
         nextCell = rows[rowPos].children[cellPos];
         nextCell.textContent = '';                
