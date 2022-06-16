@@ -115,7 +115,7 @@ document.getElementById('keyboard').addEventListener('click', function(e) {
 });
 
 document.getElementById('keyboard').addEventListener('dblclick', function(e) {
-    e.target.preventDefault();    
+    e.preventDefault();    
 });
 
 function keyPress(key) {
