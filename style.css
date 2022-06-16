@@ -104,17 +104,19 @@
 h {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 7px;
 }
 
 p {
     font-size: 14px;
     text-align: justify;
-    margin: 0 4px;
 }
 
 @media screen and (max-width: 375px) {
     h {
         font-size: 19px;
+        margin-bottom: 7px;
+}
+    p {
+        margin: 0 5px;
     }
 }
