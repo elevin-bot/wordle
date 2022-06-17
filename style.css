@@ -147,3 +147,7 @@ form {
     color: blue;
     font-size: 20px;
 }
+
+.timerButton {
+    -webkit-appearance: none;
+}
