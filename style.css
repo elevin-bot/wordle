@@ -115,8 +115,14 @@ p {
     h {
         font-size: 19px;
         margin-bottom: 7px;
-}
+    }
     p {
         margin: 0 5px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    p {
+        max-width: 385px;
     }
 }
