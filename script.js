@@ -5,6 +5,11 @@ var enteredWord = [];
 var rows;
 var gamesPlayed = 0;
 var gamesWon = 0;
+const timeInput = document.getElementById("time")
+const timerStart = document.getElementById('timerStart')
+const timerStop = document.getElementById('timerStop')
+const timeDisplay = document.getElementById('timeDisplay')
+var intervalID
 
 function main() {
     rowPos = 0;
@@ -36,6 +41,9 @@ function main() {
         }
         main.appendChild(row);
     }
+
+    // Initialise timer fields
+    timeInput.value = "0";
 }
 
 function checkWord() {
@@ -119,6 +127,36 @@ document.getElementById('keyboard').addEventListener('click', function(e) {
 document.getElementById('keyboard').addEventListener('dblclick', function(e) {
     e.preventDefault();    
 });
+
+timerStart.addEventListener('click', function() {
+    startTime()
+});
+
+timerStop.addEventListener('click', function() {
+    clearInterval(intervalID) // Stop timer
+    timeDisplay.textContent = 0
+});
+
+function startTime() {
+    if (timeInput.value == 0) {
+        return;
+    }
+    
+    // Get time in seconds
+    var timeLeft = timeInput.value * 60
+
+    // Start interval and display remaining time every second
+    intervalID = setInterval(function() { 
+        timeLeft--
+        timeDisplay.textContent = timeLeft
+        if (timeLeft === 0) {
+            clearInterval(intervalID) // Stop timer
+            // Time is up
+            const msg = "Time is up! Correct word is: " + wordToGuess + ". Play again?"
+            playAgan(msg)
+        }
+    }, 1000);
+}
 
 function keyPress(key) {
     if (rowPos == 6)

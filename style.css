@@ -114,10 +114,10 @@ p {
 @media screen and (max-width: 375px) {
     h {
         font-size: 19px;
-        margin-bottom: 7px;
     }
     p {
-        margin: 0 5px;
+        max-width: 325px;
+        margin: 6px 0 0 0;
     }
 }
 
@@ -125,4 +125,25 @@ p {
     p {
         max-width: 385px;
     }
+}
+
+#timerSection {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;    
+    margin-bottom: 20px;
+}
+
+form {
+    margin-left: 30px;
+}
+
+#timeDisplaySection {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#timeDisplay {
+    color: blue;
+    font-size: 20px;
 }
