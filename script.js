@@ -74,7 +74,7 @@ function checkWord() {
             const currentCell = rows[rowPos].children[i];
             currentCell.style.backgroundColor = letterColor;        
 
-            // Set colour on the keboard
+            // Set colour on the keyboard
             for (const key of document.getElementsByClassName("key")) {
                 if (key.textContent === enteredWord[i]) {
                     key.style.backgroundColor = letterColor;        

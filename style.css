@@ -127,6 +127,12 @@ p {
     p {
         max-width: 385px;
     }
+    #id {
+        font-size: 20px;
+    }
+    input[type=number] {
+        font-size: 16px;
+    }
 }
 
 #timerSection {
@@ -137,6 +143,10 @@ p {
     background-color: bisque;
     padding: 10px;
     border: 1px solid black;
+}
+
+form {
+    margin-bottom: 10px;
 }
 
 #timeDisplaySection {
@@ -161,4 +171,8 @@ p {
 
 .timerButton:hover {
     background-color: lightgray;
+}
+
+input[type=number] {
+    text-align: center;
 }
